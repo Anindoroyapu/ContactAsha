@@ -5,27 +5,35 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services
 builder.Services.AddControllers();
-//builder.Services.AddDbContext<AppDbContext>(options =>
-    //options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Database connection string configuration
 builder.Services.AddDbContext<AppDbContext>(options =>
-options.UseSqlServer(builder.Configuration.GetConnectionString("ConString")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ConString"))
+);
 
+// Enable HTTPS redirection
 builder.Services.AddHttpsRedirection(options =>
 {
-    options.HttpsPort = 5050;
+    options.HttpsPort = 5050; // Define the port for HTTPS
 });
+
+// Add Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// ✅ Enable Swagger middleware
+// Enable Swagger middleware
 app.UseSwagger();
 app.UseSwaggerUI(); // Opens Swagger at /swagger
 
+// HTTPS redirection middleware
 app.UseHttpsRedirection();
+
+// Enable authorization (if needed for your API)
 app.UseAuthorization();
+
+// Map controller routes
 app.MapControllers();
 
 app.Run();

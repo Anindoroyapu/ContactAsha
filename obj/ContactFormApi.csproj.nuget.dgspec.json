@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\anind\\ContactFormApi\\ContactFormApi.csproj": {}
+    "E:\\Project\\ContactAsha\\ContactAsha\\ContactFormApi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\anind\\ContactFormApi\\ContactFormApi.csproj": {
+    "E:\\Project\\ContactAsha\\ContactAsha\\ContactFormApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\anind\\ContactFormApi\\ContactFormApi.csproj",
+        "projectUniqueName": "E:\\Project\\ContactAsha\\ContactAsha\\ContactFormApi.csproj",
         "projectName": "ContactFormApi",
-        "projectPath": "C:\\Users\\anind\\ContactFormApi\\ContactFormApi.csproj",
+        "projectPath": "E:\\Project\\ContactAsha\\ContactAsha\\ContactFormApi.csproj",
         "packagesPath": "C:\\Users\\anind\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\anind\\ContactFormApi\\obj\\",
+        "outputPath": "E:\\Project\\ContactAsha\\ContactAsha\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -53,7 +53,7 @@
             },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
-              "version": "[8.0.0, )"
+              "version": "[8.0.3, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -61,13 +61,13 @@
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[8.0.3, )"
+              "version": "[9.0.4, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.4, )"
+              "version": "[9.0.4, )"
             },
             "Npgsql.EntityFrameworkCOre.postGreSQL": {
               "target": "Package",
@@ -75,7 +75,7 @@
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
-              "version": "[6.4.0, )"
+              "version": "[8.1.1, )"
             }
           },
           "imports": [

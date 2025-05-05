@@ -34,25 +34,16 @@ namespace ContactFormApi.Controllers
                 return Ok(new { success = true, message = "Form submitted successfully." });
           
         }
-           
-        // GET method to retrieve all contact messages
-      //  [HttpGet] 
-       // public async Task<IActionResult> GetMessages()
-       // {
-          
-                // Retrieve all contact messages from the database
-         //       var messages = await _context.ContactMessages.ToListAsync();
 
-                // Check if there are no messages
-          //      if (messages == null || messages.Count == 0)
-         //       {
-          //          return NotFound(new { success = false, message = "No messages found." });
-          //      }
-
-                // Return the list of messages
-          //      return Ok(new { success = true, data = messages });
-            
-       
         }
+
+        // GET: api/ContactMessages
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<ContactMessage>>> GetAllMessages()
+        {
+            var messages = await _context.ContactMessages.ToListAsync();
+            return Ok(messages);
+        }
+
     }
 }
