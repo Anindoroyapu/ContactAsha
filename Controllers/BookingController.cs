@@ -19,31 +19,44 @@ namespace ContactFormApi.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Booking>>> GetAll()
         {
-            return await _context.Bookings.ToListAsync();
+            var list = await Booking.GetListAsync(_context);
+
+            if (list == null || !list.Any())
+                return NotFound("No bookings found.");
+
+            return Ok(list);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<Booking>> Create([FromBody] Booking booking)
+        {
+            if (booking == null)
+            {
+                return BadRequest("Invalid booking data.");
+            }
+
+            await _context.Booking.AddAsync(booking);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetAll), new { id = booking.Id }, booking);
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Booking>> GetById(int id)
         {
-            var booking = await _context.Bookings.FindAsync(id);
-            if (booking == null) return NotFound();
-            return booking;
+            var booking = await Booking.FindAsync(_context, id);
+            if(booking == null)
+            {
+                return NotFound();
+            }
+            return Ok(booking) ;
         }
 
-        [HttpPost]
-        public async Task<ActionResult<Booking>> Create(Booking booking)
-        {
-            booking.CreatedAt = DateTime.UtcNow;
-            booking.UpdatedAt = DateTime.UtcNow;
 
-            _context.Bookings.Add(booking);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction(nameof(GetById), new { id = booking.Id }, booking);
-        }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, Booking booking)
+
         {
             if (id != booking.Id) return BadRequest();
 
@@ -54,16 +67,5 @@ namespace ContactFormApi.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
-        {
-            var booking = await _context.Bookings.FindAsync(id);
-            if (booking == null) return NotFound();
-
-            _context.Bookings.Remove(booking);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
     }
 }

@@ -45,33 +45,23 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "MicroSoft.EntityFrameworkCore.Design": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[9.0.4, )"
-            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[8.0.3, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[9.0.4, )"
-            },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[9.0.4, )"
+              "version": "[8.0.15, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[9.0.4, )"
+              "version": "[8.0.15, )"
             },
-            "Npgsql.EntityFrameworkCOre.postGreSQL": {
+            "Pomelo.EntityFrameworkCore.MySql": {
               "target": "Package",
-              "version": "[9.0.4, )"
+              "version": "[8.0.3, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
