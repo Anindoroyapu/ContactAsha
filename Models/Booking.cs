@@ -1,31 +1,32 @@
-﻿using ContactFormApi.Data;
+﻿using AshaApi.Data;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ContactFormApi.Models
+namespace BookingFormApi.Models
 {
     [Table("booking_form")]
     public class Booking
     {
         [Key]
+        [Column("id")]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [Required]
         [Column("full_name")]
         public string FullName { get; set; } = string.Empty;
 
-        [Required]
-        [Column("email")]
+        [Required, Column("email")]
         public string Email { get; set; } = string.Empty;
 
-        [Required]
-        [Column("phone")]
+        [Required, Column("phone")]
         public string Phone { get; set; } = string.Empty;
 
-        [Required]
+        [Required, Column("subject")]
+        public string Subject { get; set; } = string.Empty;
+
         [Column("booking_type")]
-        public string BookingType { get; set; } = "portrait"; // or wedding
+        public string BookingType { get; set; } = "portrait"; // default: portrait or wedding
 
         [Column("start_date")]
         public string StartDate { get; set; } = string.Empty;
@@ -33,7 +34,6 @@ namespace ContactFormApi.Models
         [Column("end_date")]
         public string EndDate { get; set; } = string.Empty;
 
-        [Required]
         [Column("location")]
         public string Location { get; set; } = string.Empty;
 
@@ -53,14 +53,10 @@ namespace ContactFormApi.Models
         public string? PaymentMethod { get; set; }
 
         [Column("status")]
-        public string Status { get; set; } = "pending"; // pending, confirmed, etc.
+        public string Status { get; set; } = "pending";
 
         [Column("payment_status")]
-        public string PaymentStatus { get; set; } = "unpaid"; // unpaid, paid, etc.
-
-      
-      
-
+        public string PaymentStatus { get; set; } = "unpaid";
 
         [Column("created_at")]
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
@@ -68,37 +64,28 @@ namespace ContactFormApi.Models
         [Column("updated_at")]
         public DateTime UpdatedAt { get; set; } = DateTime.UtcNow;
 
-       
-        public static async Task<List<Booking>> GetListAsync( AppDbContext _context)
+        // ✅ Static Methods (Optional Utilities)
+        public static async Task<List<Booking>> GetListAsync(AppDbContext context)
         {
             try
             {
-                var bookingList = await _context.Booking.ToListAsync();
-
-                return bookingList;
+                return await context.Bookings.ToListAsync();
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw new Exception($"Error fetching booking list: {ex.Message}");
             }
         }
 
-        public static async Task<Booking?> FindAsync( AppDbContext _context, int id)
+        public static async Task<Booking?> FindAsync(AppDbContext context, int id)
         {
             try
             {
-                var booking = await _context.Booking.FirstOrDefaultAsync(b => b.Id == id);
-                if (booking == null)
-                {
-                    return null;
-                }
-
-                return booking;
-
+                return await context.Bookings.FirstOrDefaultAsync(b => b.Id == id);
             }
             catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                throw new Exception($"Error finding booking: {ex.Message}");
             }
         }
     }
