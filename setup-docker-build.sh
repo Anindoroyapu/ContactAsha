@@ -4,11 +4,11 @@
 git pull
 
 # Build the image force
-docker build -t ContactFormApi . #--no-cache
+docker build -t contactformspi . #--no-cache
 
 # Run the docker
 docker rm -f api
-docker run -d --name api -p 5050:5050 ContactFormApi
+docker run -d --name api -p 5050:5050 contactformspi
 
 
 # Publish on Live
