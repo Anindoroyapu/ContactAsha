@@ -1,0 +1,20 @@
+﻿# Ignore .NET build outputs
+bin/
+obj/
+
+# Ignore user-specific files
+*.user
+*.suo
+*.vscode/
+
+# Ignore temp and log files
+*.log
+*.tmp
+
+# Ignore git-related files
+.git
+.gitignore
+
+# Ignore Docker-related files
+Dockerfile
+.dockerignore

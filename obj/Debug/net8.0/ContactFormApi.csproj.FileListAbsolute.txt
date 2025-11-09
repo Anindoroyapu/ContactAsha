@@ -279,3 +279,8 @@ E:\Project\ContactAsha\ContactAsha\obj\Debug\net8.0\refint\ContactFormApi.dll
 E:\Project\ContactAsha\ContactAsha\obj\Debug\net8.0\ContactFormApi.pdb
 E:\Project\ContactAsha\ContactAsha\obj\Debug\net8.0\ContactFormApi.genruntimeconfig.cache
 E:\Project\ContactAsha\ContactAsha\obj\Debug\net8.0\ref\ContactFormApi.dll
+E:\Project\ContactAsha\ContactAsha\bin\Debug\net8.0\out\web.config
+E:\Project\ContactAsha\ContactAsha\bin\Debug\net8.0\out\appsettings.Development.json
+E:\Project\ContactAsha\ContactAsha\bin\Debug\net8.0\out\appsettings.json
+E:\Project\ContactAsha\ContactAsha\bin\Debug\net8.0\out\ContactFormApi.deps.json
+E:\Project\ContactAsha\ContactAsha\bin\Debug\net8.0\out\ContactFormApi.runtimeconfig.json
