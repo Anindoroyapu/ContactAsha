@@ -2,19 +2,26 @@
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// 1️⃣ Add CORS Policy
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowLocalhost3000", policy =>
-    {
-        policy
-            .WithOrigins("http://localhost:3000") // 👈 Your frontend origin
-            .AllowAnyHeader()
-            .AllowAnyMethod()
-            .AllowCredentials();
-    });
+    options.AddPolicy("AllowAll", policy =>
+        policy.AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader());
 });
+
+// 1️⃣ Add CORS Policy
+//builder.Services.AddCors(options =>
+//{
+ //   options.AddPolicy("AllowLocalhost3000", policy =>
+ //   {
+ //       policy
+ //           .WithOrigins("http://localhost:3000") // 👈 Your frontend origin
+ //           .AllowAnyHeader()
+   //         .AllowAnyMethod()
+ //           .AllowCredentials();
+ //   });
+//});
 
 
 var connectionString = "Server=51.79.229.154;port=3306;Database=ashastd24_ashastd;User=ashastd24;Password=T%va(oyL[anE";
@@ -44,7 +51,7 @@ else
 }
 
 app.UseHttpsRedirection();
-app.UseCors("AllowLocalhost3000");
+app.UseCors("AllowAll");
 app.UseAuthorization();
 app.MapControllers();
 
