@@ -8,7 +8,7 @@ docker build -t contactformspi . #--no-cache
 
 # Run the docker
 docker rm -f api
-docker run -d --name api -p 5050:5050 contactformspi
+docker run -d --name api -p 5050:8080 contactformspi
 
 
 # Publish on Live
