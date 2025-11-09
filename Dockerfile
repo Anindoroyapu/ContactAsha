@@ -30,4 +30,4 @@ COPY .conf.* .
 # Expose the port that your application runs on
 EXPOSE 5050
 # Set the entry point for the application
-ENTRYPOINT ["dotnet", "BikiranWebAPI.dll"]
+ENTRYPOINT ["dotnet", "ContactFormApi.dll"]
