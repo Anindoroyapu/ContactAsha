@@ -3,6 +3,7 @@ using ContactFormApi.Models;
 using BookingFormApi.Models;
 using AddProductApi.Models;
 using ExpenditureFormApi.Models;
+using CollectionFormApi.Models;
 
 namespace AshaApi.Data
 {
@@ -18,7 +19,7 @@ namespace AshaApi.Data
         public DbSet<AddProduct> AddProducts { get; set; }
 
         public DbSet<Expenditure> Expenditures { get; set; }
-
+        public DbSet<Collection> Collections { get; set; }
 
     }
 }
