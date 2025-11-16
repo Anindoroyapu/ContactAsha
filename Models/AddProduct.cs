@@ -44,7 +44,7 @@ namespace AddProductApi.Models
         public string? CategoryTitle { get; set; }
 
         [Column("is_in_stock")]
-        public string? IsInStock { get; set; }
+        public string? IsInStock { get; set; }=string.Empty;
 
         [Column("delivery_amount")]
         public string DeliveryAmount { get; set; } = string.Empty;
