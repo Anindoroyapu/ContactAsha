@@ -27,9 +27,6 @@ namespace ContactFormApi.Models
 
         [Column("message")]
         public string? Message { get; set; }
-
-       
-
         [Column("created_at")]
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 

@@ -3,31 +3,20 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+
+
+
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowFrontend", policy =>
+    options.AddPolicy("AllowAll", builder =>
     {
-        policy.WithOrigins("https://liveflashback.com")
-              .AllowAnyHeader()
-              .AllowAnyMethod()
-              .AllowCredentials();
+        builder
+            .AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
     });
 });
-
-
-
-// 1️⃣ Add CORS Policy
-//builder.Services.AddCors(options =>
-//{
-//   options.AddPolicy("AllowLocalhost3000", policy =>
-//   {
-//       policy
-//           .WithOrigins("http://localhost:3000") // 👈 Your frontend origin
-//           .AllowAnyHeader()
-//         .AllowAnyMethod()
-//           .AllowCredentials();
-//   });
-//});
 
 
 var connectionString = "Server=51.79.229.154;port=3306;Database=ashastd24_ashastd;User=ashastd24;Password=T%va(oyL[anE";
@@ -57,10 +46,12 @@ else
     app.UseHsts(); // Added for production safety
 }
 
-app.UseHttpsRedirection();
-app.UseCors("AllowFrontend");
+
+
+app.UseCors("AllowAll");
+
 app.UseAuthorization();
+
 app.MapControllers();
 
-// 5️⃣ Run the app
 app.Run();
