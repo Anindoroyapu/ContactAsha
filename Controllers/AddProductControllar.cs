@@ -55,14 +55,14 @@ namespace AddProductApi.Controllers
             await _context.AddProducts.AddAsync(addProduct);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetById), new { id = addProduct.Sl }, addProduct);
+            return CreatedAtAction(nameof(GetById), new { id = addProduct.Id }, addProduct);
         }
 
         // PUT: api/addProduct/{id}
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] AddProduct addProduct)
         {
-            if (id != addProduct.Sl)
+            if (id != addProduct.Id)
                 return BadRequest("Product ID mismatch.");
 
             var existingAddProduct = await _context.AddProducts.FindAsync(id);

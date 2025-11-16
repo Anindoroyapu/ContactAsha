@@ -9,9 +9,9 @@ namespace AddProductApi.Models
     public class AddProduct
     {
         [Key]
-        [Column("sl")]
+        [Column("id")]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Sl { get; set; }
+        public int Id { get; set; }
 
         [Column("brand_sl")]
         public string BrandSl { get; set; } = string.Empty;
@@ -73,11 +73,11 @@ namespace AddProductApi.Models
             }
         }
 
-        public static async Task<AddProduct?> FindAsync(AppDbContext context, int sl)
+        public static async Task<AddProduct?> FindAsync(AppDbContext context, int id)
         {
             try
             {
-                return await context.AddProducts.FirstOrDefaultAsync(b => b.Sl == sl);
+                return await context.AddProducts.FirstOrDefaultAsync(b => b.Id == id);
             }
             catch (Exception ex)
             {
