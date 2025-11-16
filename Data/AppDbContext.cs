@@ -5,6 +5,7 @@ using AddProductApi.Models;
 using ExpenditureFormApi.Models;
 using CollectionFormApi.Models;
 
+
 namespace AshaApi.Data
 {
     public class AppDbContext : DbContext
@@ -20,6 +21,8 @@ namespace AshaApi.Data
 
         public DbSet<Expenditure> Expenditures { get; set; }
         public DbSet<Collection> Collections { get; set; }
+
+        public DbSet<UploadController> UploadControllers { get; set; }
 
     }
 }
