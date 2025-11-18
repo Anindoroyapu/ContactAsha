@@ -4,6 +4,7 @@ using BookingFormApi.Models;
 using AddProductApi.Models;
 using ExpenditureFormApi.Models;
 using CollectionFormApi.Models;
+using CheckoutFormApi.Models;
 
 
 namespace AshaApi.Data
@@ -21,6 +22,7 @@ namespace AshaApi.Data
 
         public DbSet<Expenditure> Expenditures { get; set; }
         public DbSet<Collection> Collections { get; set; }
+         public DbSet<Checkout> Checkouts { get; set; }
 
 
     }
