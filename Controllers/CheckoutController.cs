@@ -39,7 +39,7 @@ namespace CheckoutFormApi.Controllers
             {
                 error = false,
                 message = "Checkouts retrieved successfully",
-                data = (new { orders = list }),
+                data = list,
                 referenceName = ""
             });
         }
