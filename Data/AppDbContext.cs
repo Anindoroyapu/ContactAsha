@@ -22,7 +22,6 @@ namespace AshaApi.Data
         public DbSet<Expenditure> Expenditures { get; set; }
         public DbSet<Collection> Collections { get; set; }
 
-        public DbSet<UploadController> UploadControllers { get; set; }
 
     }
 }
