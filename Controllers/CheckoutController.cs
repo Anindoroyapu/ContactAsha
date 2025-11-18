@@ -25,9 +25,23 @@ namespace CheckoutFormApi.Controllers
             var list = await _context.Checkouts.ToListAsync();
 
             if (list == null || !list.Any())
-                return NotFound("No Checkout found.");
+            {
+                return Ok(new
+                {
+                    error = true,
+                    message = "No Checkout found.",
+                    data = new List<Checkout>(),
+                    referenceName = ""
+                });
+            }
 
-            return Ok(list);
+            return Ok(new
+            {
+                error = false,
+                message = "Checkouts retrieved successfully",
+                data = list,
+                referenceName = ""
+            });
         }
 
         // ✅ Get Checkout by ID
@@ -44,10 +58,18 @@ namespace CheckoutFormApi.Controllers
 
         // ✅ Create new Checkout
         [HttpPost]
-        public async Task<ActionResult<Checkout>> Create([FromBody] Checkout checkout)
+        public async Task<IActionResult> Create([FromBody] Checkout checkout)
         {
             if (checkout == null)
-                return BadRequest("Invalid Checkout data.");
+            {
+                return Ok(new
+                {
+                    error = true,
+                    message = "Invalid Checkout data.",
+                    data = (Checkout)null,
+                    referenceName = ""
+                });
+            }
 
             checkout.CreatedAt = DateTime.UtcNow;
             checkout.UpdatedAt = DateTime.UtcNow;
@@ -55,7 +77,13 @@ namespace CheckoutFormApi.Controllers
             await _context.Checkouts.AddAsync(checkout);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetById), new { id = checkout.Id }, checkout);
+            return Ok(new
+            {
+                error = false,
+                message = "Checkout created successfully",
+                data = checkout,
+                referenceName = ""
+            });
         }
 
         // ✅ Update existing Checkout
