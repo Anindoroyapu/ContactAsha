@@ -1,6 +1,9 @@
 ﻿using AshaApi.Data;
 using Microsoft.EntityFrameworkCore;
 
+Environment.SetEnvironmentVariable("ASPNETCORE_WEBROOT", "public_html");
+
+
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -33,7 +36,17 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+
 var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwaggerUI();
+}
+
+app.UseStaticFiles();
 
 // 4️⃣ Configure Middleware
 if (app.Environment.IsDevelopment())

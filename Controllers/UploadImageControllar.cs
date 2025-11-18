@@ -36,7 +36,7 @@ public class UploadController : ControllerBase
         }
 
         // Public URL
-        string publicUrl = $"{Request.Scheme}://{Request.Host}/admin.ashaa.xyz/uploads/{fileName}";
+        string publicUrl = $"{Request.Scheme}://{Request.Host}/uploads/{fileName}";
 
         return Ok(new { url = publicUrl });
     }
