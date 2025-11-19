@@ -34,9 +34,9 @@ namespace ExpenditureFormApi.Models
         public int? Amount { get; set; }
 
         [Column("status")]
-        public string? Stastus { get; set; } = "panding";
+        public string? Stastus { get; set; } = string.Empty;
 
-       
+
 
         [Column("created_at")]
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;

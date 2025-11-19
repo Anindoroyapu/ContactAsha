@@ -34,7 +34,7 @@ namespace CollectionFormApi.Models
         public int? Amount { get; set; }
 
         [Column("status")]
-        public string? Stastus { get; set; } = "panding";
+        public string? Stastus { get; set; } = string.Empty;
 
 
 
