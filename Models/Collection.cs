@@ -24,7 +24,7 @@ namespace CollectionFormApi.Models
 
 
         [Column("note")]
-        public string Note { get; set; } = "portrait"; // default: portrait or wedding
+        public string Note { get; set; }= string.Empty;
 
 
         [Column("method")]

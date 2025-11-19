@@ -24,9 +24,9 @@ namespace ExpenditureFormApi.Models
 
 
         [Column("note")]
-        public string Note { get; set; } = "portrait"; // default: portrait or wedding
+        public string Note { get; set; } = string.Empty;
 
-        
+
         [Column("method")]
         public string Method { get; set; } = string.Empty;
 
