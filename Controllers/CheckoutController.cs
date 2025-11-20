@@ -104,5 +104,35 @@ namespace CheckoutFormApi.Controllers
 
             return NoContent();
         }
+
+        [HttpPatch("status/{id}")]
+        public async Task<IActionResult> UpdateStatus(int id, [FromBody] string status)
+        {
+            var checkout = await _context.Checkouts.FindAsync(id);
+
+            if (checkout == null)
+            {
+                return Ok(new
+                {
+                    error = true,
+                    message = "Checkout not found.",
+                    data = (Checkout)null,
+                    referenceName = ""
+                });
+            }
+
+            checkout.Status = status;
+            checkout.UpdatedAt = DateTime.UtcNow;
+
+            await _context.SaveChangesAsync();
+
+            return Ok(new
+            {
+                error = false,
+                message = "Checkout status updated successfully",
+                data = checkout,
+                referenceName = ""
+            });
+        }
     }
 }

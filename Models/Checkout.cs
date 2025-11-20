@@ -48,6 +48,8 @@ namespace CheckoutFormApi.Models
         
         [Column("product_sku")]
         public string? ProductSku { get; set; }
+        [Column("status")]
+        public string? Status { get; set; }
 
 
 
