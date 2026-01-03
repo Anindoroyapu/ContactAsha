@@ -7,6 +7,7 @@ using CollectionFormApi.Models;
 using CheckoutFormApi.Models;
 using AshaCollectionFormApi.Models;
 using AshaExpenditureFormApi.Models;
+using MooniAddProductApi.Models;
 
 
 namespace AshaApi.Data
@@ -27,6 +28,7 @@ namespace AshaApi.Data
         public DbSet<Collection> Collections { get; set; }
         public DbSet<AshaCollection> AshaCollections { get; set; }
         public DbSet<Checkout> Checkouts { get; set; }
+        public DbSet<MooniAddProduct> MooniAddProducts { get; set; }
 
 
     }
